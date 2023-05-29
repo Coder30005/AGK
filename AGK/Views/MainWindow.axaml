@@ -10,11 +10,26 @@
         Title="AGK"
 		WindowStartupLocation="CenterScreen">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+		<vm:LoginWindowViewModel/>
+	</Design.DataContext>
 	
+	<DockPanel>
+		<ListBox Items="{Binding Services}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel>		
+						<TextBlock Text="{Binding Name}"/>
+						<TextBlock Text="Название"/>
+						<TextBlock Text="{Binding Price}"/>
+						<TextBlock Text="Цена"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</DockPanel>
+
 
 </Window>
