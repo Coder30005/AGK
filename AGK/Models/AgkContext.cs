@@ -40,7 +40,6 @@ public partial class AgkContext : DbContext
 
             entity.HasOne(d => d.IdServicesNavigation).WithMany(p => p.Clients)
                 .HasForeignKey(d => d.IdServices)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Clients_FK");
         });
 

@@ -9,7 +9,7 @@ public partial class Client
 
     public string Fullname { get; set; } = null!;
 
-    public int IdServices { get; set; }
+    public int? IdServices { get; set; }
 
-    public virtual Service IdServicesNavigation { get; set; } = null!;
+    public virtual Service? IdServicesNavigation { get; set; }
 }
