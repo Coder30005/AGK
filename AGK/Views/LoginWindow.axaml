@@ -5,7 +5,8 @@
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="450"
         x:Class="AGK.Views.LoginWindow"
         Title="LoginWindow"
-		Width="700" Height="450">
+		Width="700" Height="450"
+		WindowStartupLocation="CenterScreen">
 	<StackPanel>
 		<TextBlock Text="Логин" FontSize="30" HorizontalAlignment="Center" Margin="25" VerticalAlignment="Center"/>
 		<TextBox Text="{Binding	Login}" FontSize="30" Width="500"/>

@@ -1,10 +1,13 @@
 ﻿using AGK.Models;
 using AGK.Views;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,20 +36,29 @@ namespace AGK.ViewModels
         public void Auth()
         {
             AgkContext dbContext = new AgkContext();
-            User? user = dbContext.Users.Where(u => u.Login == Login && u.Password == Password).FirstOrDefault();
+            User? user = dbContext.Users.Where(e => e.Login == Login && e.Password == Password).FirstOrDefault();
             if (user == null)
             {
                 Message = "Неправильный логин или пароль!";
             }
             else
             {
-                Message = string.Empty;
-                MainWindow mainWindow = new MainWindow()
+                if (user.IsAdmin == true)
                 {
-                    DataContext = new MainWindowViewModel(user)
-                };
-                mainWindow.Show();
-                Owner.Close();
+                    Message = string.Empty;
+                    AdminWindow adminWindow = new AdminWindow();
+                    adminWindow.DataContext = new AdminWindowViewModel(user, adminWindow);
+                    adminWindow.Show();
+                    Owner.Close();
+                }
+                else
+                {
+                    Message = string.Empty;
+                    UserWindow userWindow = new UserWindow();
+                    userWindow.DataContext = new UserWindowViewModel(user, userWindow);
+                    userWindow.Show();
+                    Owner.Close();
+                }
             }
         }
     }

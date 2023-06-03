@@ -17,8 +17,17 @@ build_property.ProjectDir = C:\Users\student\Desktop\AGK\AGK\
 [C:/Users/student/Desktop/AGK/AGK/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/student/Desktop/AGK/AGK/Views/AdminWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/student/Desktop/AGK/AGK/Views/EditWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/student/Desktop/AGK/AGK/Views/LoginWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/student/Desktop/AGK/AGK/Views/MainWindow.axaml]
+[C:/Users/student/Desktop/AGK/AGK/Views/SignUpWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/student/Desktop/AGK/AGK/Views/UserWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

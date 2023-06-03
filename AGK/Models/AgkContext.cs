@@ -15,6 +15,8 @@ public partial class AgkContext : DbContext
     {
     }
 
+    public virtual DbSet<Client> Clients { get; set; }
+
     public virtual DbSet<Employee> Employees { get; set; }
 
     public virtual DbSet<Service> Services { get; set; }
@@ -23,23 +25,36 @@ public partial class AgkContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=192.168.0.1\\SQLEXPRESS;User=is51_0;Password=12345678Aa;Database=AGK;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Server=192.168.0.1\\SQLEXPRESS;User=is51_0;Password=12345678Aa;Database=AGK;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Client>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("Clients_PK");
+
+            entity.Property(e => e.Fullname)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.IdServices).HasColumnName("Id_Services");
+
+            entity.HasOne(d => d.IdServicesNavigation).WithMany(p => p.Clients)
+                .HasForeignKey(d => d.IdServices)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Clients_FK");
+        });
+
         modelBuilder.Entity<Employee>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("Employees_PK");
 
-            entity.Property(e => e.FullName)
+            entity.Property(e => e.Fullname)
                 .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("Full_name");
+                .IsUnicode(false);
             entity.Property(e => e.IdServices).HasColumnName("Id_Services");
 
             entity.HasOne(d => d.IdServicesNavigation).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.IdServices)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Employees_FK");
         });
 

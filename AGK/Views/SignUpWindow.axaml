@@ -1,0 +1,18 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:vm="using:AGK.ViewModels"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="150"
+        x:Class="AGK.Views.SignUpWindow"
+        Title="SignUpWindow"
+		Width="700" Height="150"
+		WindowStartupLocation="CenterScreen">
+	<Design.DataContext>
+		<vm:SignUpWindowViewModel/>
+	</Design.DataContext>
+	<StackPanel>
+		<TextBlock Text="Имя клиента" FontSize="25" HorizontalAlignment="Center" Margin="20"/>
+		<TextBox Text="{Binding	Clients.Fullname}" Width="500" FontSize="25"/>
+	</StackPanel>
+</Window>

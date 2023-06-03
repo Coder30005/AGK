@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:vm="using:AGK.ViewModels"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AGK.Views.UserWindow"
+        Title="UserWindow">
+	<Design.DataContext>
+		<vm:UserWindowViewModel/>
+	</Design.DataContext>
+	<DockPanel>
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="10" HorizontalAlignment="Center">
+			<Button Content="SingUp" DockPanel.Dock="Top" Command="{Binding	SignUpClients}" Margin="10"/>
+		</StackPanel>
+		<TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Right" Text="{Binding UserName}"></TextBlock>
+		<ListBox Items="{Binding Clients}" SelectedItem="{Binding SelectetClient}" SelectionMode="Single">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel>
+						<TextBlock Text="{Binding Fullname}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</DockPanel>
+</Window>

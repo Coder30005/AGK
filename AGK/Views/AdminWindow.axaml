@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:vm="using:AGK.ViewModels"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
+        x:Class="AGK.Views.AdminWindow"
+        Title="AdminWindow"
+		WindowStartupLocation="CenterScreen">
+	<Design.DataContext>
+		<vm:AdminWindowViewModel/>
+	</Design.DataContext>
+	<DockPanel>
+		<TextBlock DockPanel.Dock="Top" HorizontalAlignment="Right" Text="{Binding UserName}" Margin="10" FontSize="10"></TextBlock>
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="10">
+			<Button Command="{Binding AddMenu}" Margin="10">Добавить</Button>
+			<Button Command="{Binding SaveDbChabges}" Margin="10">Сохранить</Button>
+			<Button Command="{Binding DeleteSelected}" Margin="10">Удалить</Button>
+		</StackPanel>
+		<ListBox Items="{Binding Services}" SelectedItem="{Binding SelectedService}" SelectionMode="Single">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel>
+						<TextBlock Text="{Binding Name}"/>
+						<TextBlock Text="{Binding Price}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</DockPanel>
+</Window>
